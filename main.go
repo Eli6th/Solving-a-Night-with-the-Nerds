@@ -1,7 +1,7 @@
 package main
 
 import (
-	"fmt"
+    "fmt"
     "strings"
     "math/rand"
     "time"
@@ -178,19 +178,21 @@ func main() {
         rooms = createMap(listRooms)
 
         // Creating list rooms into order in which items are held
-        temp, _ := strconv.Atoi(rooms["KITCHEN"]["id"])
-        listRooms[temp] = "KITCHEN"
-        temp, _ = strconv.Atoi(rooms["LIVING ROOM"]["id"])
-        listRooms[temp] = "LIVING ROOM"
-        temp, _ = strconv.Atoi(rooms["DINING ROOM"]["id"])
-        listRooms[temp] = "DINING ROOM"
-        temp, _ = strconv.Atoi(rooms["LIBRARY"]["id"])
-        listRooms[temp] = "LIBRARY"
-        temp, _ = strconv.Atoi(rooms["COURTYARD"]["id"])
-        listRooms[temp] = "COURTYARD"
-        temp, _ = strconv.Atoi(rooms["CELLAR"]["id"])
-        listRooms[temp] = "CELLAR"
-        fmt.Println(listRooms)
+        if (settings["difficulty"] != "EASY") {
+            temp, _ := strconv.Atoi(rooms["KITCHEN"]["id"])
+            listRooms[temp] = "KITCHEN"
+            temp, _ = strconv.Atoi(rooms["LIVING ROOM"]["id"])
+            listRooms[temp] = "LIVING ROOM"
+            temp, _ = strconv.Atoi(rooms["DINING ROOM"]["id"])
+            listRooms[temp] = "DINING ROOM"
+            temp, _ = strconv.Atoi(rooms["LIBRARY"]["id"])
+            listRooms[temp] = "LIBRARY"
+            temp, _ = strconv.Atoi(rooms["COURTYARD"]["id"])
+            listRooms[temp] = "COURTYARD"
+            temp, _ = strconv.Atoi(rooms["CELLAR"]["id"])
+            listRooms[temp] = "CELLAR"
+            fmt.Println("Somehow still on")
+        }
 
         if (settings["tutorial"] == "ON") {
             fmt.Println("\033[2J")
@@ -828,10 +830,6 @@ func createMap(listRooms [6]string) map[string]map[string]string {
         rooms[listRooms[4]]["id"] = "4"
         rooms[listRooms[5]]["item"] = ""
         rooms[listRooms[5]]["id"] = "5"
-    }
-
-    for i := 0; i < len(listRooms); i++ {
-        listRooms = randomizeRooms(listRooms)
     }
 
     // Setting directions for all of the rooms
